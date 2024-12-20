@@ -1,11 +1,9 @@
 {
-  "lint-staged": {
-    "*.ts": "prettier --write",
-    "*.js": "prettier --write",
-    "*.tsx": "prettier --write",
-    "*.jsx": "prettier --write",
-    "*.json": "prettier --write",
-    "*.css": "prettier --write",
-    "*.html": "prettier --write"
-  }
+  "*.ts": "prettier --write",
+  "*.js": "prettier --write",
+  "*.tsx": "prettier --write",
+  "*.jsx": "prettier --write",
+  "*.json": "prettier --write",
+  "*.css": "prettier --write",
+  "*.html": "prettier --write"
 }
