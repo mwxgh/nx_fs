@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx run-many --target=dev --all & nx run-many --target=serve --all",
+    "dev": "nx run-many --target=serve --all & nx run-many --target=dev --all",
     "lint": "nx run-many --target=lint --all",
     "test": "nx run-many --target=jest --all",
     "format": "prettier --write --check \"**/*.{js,json,ts,tsx,md}\"",
@@ -70,14 +70,5 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.13.0",
     "webpack-cli": "^5.1.4"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
-      "prettier --write"
-    ],
-    "**/*.{html,json,css,scss,md,mdx}": [
-      "prettier -w"
-    ]
   }
 }
