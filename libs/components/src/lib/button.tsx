@@ -1,11 +1,20 @@
-import styles from './button.module.css'
+'use client' // Mark this as a Client Component
 
-export function Button() {
-  return (
-    <div className={styles['container']}>
-      <h1>Welcome to Button!</h1>
-    </div>
-  )
+import { ReactNode } from 'react'
+
+interface ButtonProps {
+  children: ReactNode
+  className?: string
+  appName: string
 }
 
-export default Button
+export const ButtonAlert = ({ children, className, appName }: ButtonProps) => {
+  return (
+    <button
+      className={className}
+      onClick={() => alert(`Hello from your ${appName} app!`)}
+    >
+      {children}
+    </button>
+  )
+}
