@@ -20,8 +20,8 @@ model Category {
   name      String     @db.VarChar(100)
   slug      String     @db.VarChar(150)
   status    BaseStatus @default(ACTIVE)
-  createdBy Int        @map("created_by") @db.UnsignedInt
-  updatedBy Int        @map("updated_by") @db.UnsignedInt
+  createdBy Int?       @map("created_by") @db.UnsignedInt
+  updatedBy Int?       @map("updated_by") @db.UnsignedInt
   createdAt DateTime   @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt DateTime   @default(now()) @map("updated_at") @db.DateTime(0)
   deletedAt DateTime?  @map("deleted_at") @db.DateTime(0)
@@ -42,8 +42,8 @@ model Comment {
   status     CommentStatus   @default(APPROVED)
   priority   CommentPriority @default(MEDIUM)
   detail     String          @db.Text
-  createdBy  Int             @map("created_by") @db.UnsignedInt
-  updatedBy  Int             @map("updated_by") @db.UnsignedInt
+  createdBy  Int?            @map("created_by") @db.UnsignedInt
+  updatedBy  Int?            @map("updated_by") @db.UnsignedInt
   acceptedBy Int?            @map("accepted_by") @db.UnsignedInt
   createdAt  DateTime        @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt  DateTime        @default(now()) @map("updated_at") @db.DateTime(0)
@@ -72,8 +72,8 @@ model Content {
   status     ContentStatus   @default(DRAFT)
   priority   ContentPriority @default(MEDIUM)
   type       ContentType     @default(ARTICLE)
-  createdBy  Int             @map("created_by") @db.UnsignedInt
-  updatedBy  Int             @map("updated_by") @db.UnsignedInt
+  createdBy  Int?            @map("created_by") @db.UnsignedInt
+  updatedBy  Int?            @map("updated_by") @db.UnsignedInt
   releasedBy Int?            @map("released_by") @db.UnsignedInt
   releasedAt DateTime        @default(now()) @map("released_at") @db.DateTime(0)
   expiredAt  DateTime?       @map("expired_at") @db.DateTime(0)
@@ -104,8 +104,8 @@ model Media {
   url          String     @db.VarChar(500)
   properties   Json?
   status       BaseStatus @default(ACTIVE)
-  createdBy    Int        @map("created_by") @db.UnsignedInt
-  updatedBy    Int        @map("updated_by") @db.UnsignedInt
+  createdBy    Int?       @map("created_by") @db.UnsignedInt
+  updatedBy    Int?       @map("updated_by") @db.UnsignedInt
   createdAt    DateTime   @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt    DateTime   @default(now()) @map("updated_at") @db.DateTime(0)
   deletedAt    DateTime?  @map("deleted_at") @db.DateTime()
@@ -120,13 +120,13 @@ model Reaction {
   contentId Int          @map("content_id") @db.UnsignedInt
   commentId Int?         @map("comment_id") @db.UnsignedInt
   type      ReactionType @default(LIKE)
-  createdBy Int          @map("created_by") @db.UnsignedInt
+  createdBy Int?         @map("created_by") @db.UnsignedInt
   createdAt DateTime     @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt DateTime     @default(now()) @map("updated_at") @db.DateTime(0)
   deletedAt DateTime?    @map("deleted_at") @db.DateTime()
 
   content Content  @relation(fields: [contentId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  user    User     @relation(fields: [createdBy], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  user    User?    @relation(fields: [createdBy], references: [id], onDelete: Cascade, onUpdate: NoAction)
   comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@index([contentId])
@@ -140,8 +140,8 @@ model Tag {
   name      String     @db.VarChar(50)
   slug      String     @db.VarChar(100)
   status    BaseStatus @default(ACTIVE)
-  createdBy Int        @map("created_by") @db.UnsignedInt
-  updatedBy Int        @map("updated_by") @db.UnsignedInt
+  createdBy Int?       @map("created_by") @db.UnsignedInt
+  updatedBy Int?       @map("updated_by") @db.UnsignedInt
   createdAt DateTime   @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt DateTime   @default(now()) @map("updated_at") @db.DateTime(0)
   deletedAt DateTime?  @map("deleted_at") @db.DateTime()
@@ -162,8 +162,8 @@ model User {
   email        String?    @db.VarChar(255)
   status       UserStatus @default(ACTIVE)
   refreshToken String?    @map("refresh_token") @db.VarChar(255)
-  createdBy    Int        @map("created_by") @db.UnsignedInt
-  updatedBy    Int        @map("updated_by") @db.UnsignedInt
+  createdBy    Int?       @map("created_by") @db.UnsignedInt
+  updatedBy    Int?       @map("updated_by") @db.UnsignedInt
   createdAt    DateTime   @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt    DateTime   @default(now()) @map("updated_at") @db.DateTime(0)
   deletedAt    DateTime?  @map("deleted_at") @db.DateTime()
