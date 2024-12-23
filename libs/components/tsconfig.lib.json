@@ -9,5 +9,5 @@
     ]
   },
   "exclude": [],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
