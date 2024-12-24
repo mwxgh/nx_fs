@@ -14,7 +14,7 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "6764e6e4cda8a343a52bfdec",
+  "nxCloudId": "676a8d545a51c7d6549b8879",
   "plugins": [
     {
       "plugin": "@nx/next/plugin",
@@ -25,12 +25,7 @@
         "serveStaticTargetName": "serve-static"
       }
     },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
     {
       "plugin": "@nx/webpack/plugin",
       "options": {
@@ -41,20 +36,10 @@
     }
   ],
   "generators": {
-    "@nx/next": {
-      "application": {
-        "style": "tailwind",
-        "linter": "eslint"
-      }
-    },
+    "@nx/next": { "application": { "style": "tailwind", "linter": "eslint" } },
     "@nx/react": {
-      "library": {
-        "unitTestRunner": "none"
-      },
-      "application": {
-        "style": "tailwind",
-        "linter": "eslint"
-      }
+      "library": { "unitTestRunner": "none" },
+      "application": { "style": "tailwind", "linter": "eslint" }
     }
   }
 }
