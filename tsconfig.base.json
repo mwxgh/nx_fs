@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-fs/components": ["libs/components/src/index.ts"],
-      "@nx-fs/database": ["libs/database/src/index.ts"]
+      "@libs/share-ui": ["libs/share-ui/src/index.ts"],
+      "@libs/database": ["libs/database/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -3,24 +3,39 @@
  * This is only a minimal backend to get started.
  */
 
-import { Logger, RequestMethod } from '@nestjs/common'
+import {
+  HttpStatus,
+  RequestMethod,
+  UnprocessableEntityException,
+  ValidationPipe,
+} from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import { setupSwagger } from './shared/utils'
+import { setupSwagger } from './swagger'
+import config from './config/app.config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  app.setGlobalPrefix('api', {
+
+  app.setGlobalPrefix('v1', {
     exclude: [{ path: 'health', method: RequestMethod.GET }],
   })
-  const port = process.env.PORT_API
-  await app.listen(port)
+
+  // Use global pipes
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      transform: true,
+      exceptionFactory: (errors) => new UnprocessableEntityException(errors),
+    }),
+  )
 
   // Setup swagger
   setupSwagger(app)
 
-  Logger.log(`🚀 Application is running on: http://localhost:${port}`)
-  Logger.log(`🚀 Swagger is running on: http://localhost:${port}/swagger`)
+  const { port } = config().app
+  await app.listen(port)
 }
 
 bootstrap()

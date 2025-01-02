@@ -7,7 +7,7 @@ import {
   MemoryHealthIndicator,
   PrismaHealthIndicator,
 } from '@nestjs/terminus'
-import { prisma } from '@nx-fs/database'
+import { prisma } from '@libs/database'
 
 @ApiTags('Health check')
 @Controller('health')
