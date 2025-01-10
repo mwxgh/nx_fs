@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export type UserProp = {
   id: number
   role: number
@@ -6,7 +5,7 @@ export type UserProp = {
 
 export type IAttachment = {
   filename: string
-  content?: any
+  content?: unknown
   path?: string
   contentType?: string
   cid?: string
@@ -15,7 +14,7 @@ export type IAttachment = {
   href?: string
 }
 
-export type ObjectType = { [key: string]: any }
+export type ObjectType = { [key: string]: unknown }
 
 export type ExportHeaderType<T> = Partial<{ [K in keyof T]: string }>
 

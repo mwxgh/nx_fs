@@ -94,7 +94,7 @@ export const promiseAllConcurrency = async <T>(
 
 export const buildLogParameters = (params: ObjectType): ObjectType => {
   AppConstant.blackListField.forEach((item) => {
-    if (params[item]) {
+    if (typeof params[item] === 'string') {
       params[item] = replaceHiddenText(params[item])
     }
   })
