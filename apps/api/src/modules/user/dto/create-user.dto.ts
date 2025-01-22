@@ -1,33 +1,28 @@
-import { ApiProperty } from '@nestjs/swagger'
 import { UserRole, UserStatus } from '@prisma/client'
-import { IsEnum, IsString } from 'class-validator'
+import {
+  EnumField,
+  EnumFieldOptional,
+  StringField,
+  StringFieldOptional,
+} from '../../../common/decorators'
+import { EntityConstant } from '../../../common/constants'
 
 export class CreateUserDto {
-  @ApiProperty({ description: 'The firstName of the user' })
-  @IsString({ message: 'Must be string' })
+  @StringField({ maxLength: EntityConstant.EntityUserNameLength })
   readonly firstName: string
 
-  @ApiProperty({ description: 'The lastName of the user' })
-  @IsString({ message: 'Must be string' })
+  @StringField({ maxLength: EntityConstant.EntityUserNameLength })
   readonly lastName: string
 
-  @ApiProperty({ description: 'The username of the user' })
-  @IsString({ message: 'Must be string' })
+  @StringField({ maxLength: EntityConstant.EntityUserNameLength })
   readonly username: string
 
-  @ApiProperty({ description: 'The email of the user' })
-  @IsString({ message: 'Must be string' })
+  @StringFieldOptional({ maxLength: EntityConstant.EntityShortLength })
   readonly email: string
 
-  @ApiProperty({ description: 'The role of the user' })
-  @IsEnum(UserRole)
-  role: UserRole
+  @EnumField(() => UserRole)
+  readonly role: UserRole
 
-  @ApiProperty({ description: 'The status of the user' })
-  @IsEnum(UserStatus)
-  status: UserStatus
-
-  @ApiProperty({ description: 'The password of the user' })
-  @IsString()
-  password: string
+  @EnumFieldOptional(() => UserStatus)
+  readonly status: UserStatus
 }
