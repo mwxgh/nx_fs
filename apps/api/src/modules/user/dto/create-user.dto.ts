@@ -3,7 +3,6 @@ import {
   EnumField,
   EnumFieldOptional,
   StringField,
-  StringFieldOptional,
 } from '../../../common/decorators'
 import { EntityConstant } from '../../../common/constants'
 
@@ -17,7 +16,7 @@ export class CreateUserDto {
   @StringField({ maxLength: EntityConstant.EntityUserNameLength })
   readonly username: string
 
-  @StringFieldOptional({ maxLength: EntityConstant.EntityShortLength })
+  @StringField({ maxLength: EntityConstant.EntityShortLength })
   readonly email: string
 
   @EnumField(() => UserRole)

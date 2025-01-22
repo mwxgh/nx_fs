@@ -1,8 +1,10 @@
-export type UserProp = {
-  id: number
-  role: number
-}
+import { UserRole } from '@prisma/client'
 
+export class AuthData {
+  id: string
+  role: UserRole
+  email?: string
+}
 export type IAttachment = {
   filename: string
   content?: unknown
