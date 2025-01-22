@@ -8,7 +8,7 @@
   "targets": {
     "dev": {
       "options": {
-        "port": "${PORT_WEB}"
+        "port": "${WEB_PORT}"
       }
     }
   }
